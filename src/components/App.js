@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
 import Map from './Map.js'
+import AddPage from './AddPage.js'
+
 
 class App extends Component {
-  static render() {
+   render() {
     return (
       <div className="App">
         <div className="App-header">
@@ -15,6 +17,7 @@ class App extends Component {
               <div className="Menu-element">Occupy</div>
               <div className="Menu-element">Stats</div>
           </nav>
+            <AddPage />
           <div className="Map">
           <Map />
           </div>

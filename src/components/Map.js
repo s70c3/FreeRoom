@@ -7,7 +7,7 @@ import Room from './Room.js'
 
 class Map extends Component {
 
-    static render() {
+    render() {
         return (<Room/>);
     }
 }
