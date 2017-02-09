@@ -18,7 +18,7 @@
   font-size: large;
 }
 
-.Menu-element {
+.menu__item {
   display: inline-block;
   margin: 10px;
 }

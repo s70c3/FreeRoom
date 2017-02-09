@@ -10,7 +10,9 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
-    "redux": "^1.0.0-rc"
+    "react-router": "^3.0.2",
+    "redux": "^1.0.0-rc",
+    "redux-form": "^6.5.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -2,6 +2,7 @@
  * Created by s70c3 on 07.02.17.
  */
 import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
 import '../styles/Grid.css';
 
 class Grid extends  React.Component {
@@ -9,8 +10,6 @@ class Grid extends  React.Component {
     //var hCoord;
     
 
-
-    
     render () {
         return(
         <svg className="map-img" xmlns="http://www.w3.org/2000/svg" width="672" height="315"

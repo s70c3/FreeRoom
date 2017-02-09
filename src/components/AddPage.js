@@ -57,13 +57,13 @@ class AddPage extends Component {
                             className="add__time"
                         />
                     </label>
-                    <input
-                        type="subit"
+                    <button
+                        type="submit"
                         className='add__btn'
                         onClick={this.onBtnClickHandler}
                         ref='alert_button'>
                         Добавить
-                    </input>
+                    </button>
                 </form>
             </div>
         );
