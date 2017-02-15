@@ -12,9 +12,7 @@ class Room extends Component {
     }
 
     componentDidMount() {
-        this.mapState = {
-            na: "map-unselected"
-        };
+        this.mapState = "map-unselected"
     };
 
     onMapClick(area) {
@@ -57,27 +55,14 @@ class Room extends Component {
     render() {
         this.changeCss();
         return (
-            <div>
-                <svg className="map-img" xmlns="http://www.w3.org/2000/svg" width="672" height="315"
-                     viewBox="0 0 672 315" id="svg5249">
-                    <defs id="defs5257">
-                        <linearGradient id="linearGradient1">
-                            <stop offset="0" id="stop4301" stopColor="#cc5252"/>
-                        </linearGradient>
-                        <linearGradient id="linearGradient4293">
-                            <stop offset="0" id="stop4295" stopColor="#84297f"/>
-                        </linearGradient>
-                    </defs>
-                    <g id="AF" className={this.mapState.na} onClick={this.onMapClick.bind(this, 'af')}>
-                           <rect className="roomFree" width="100" height="100" />
+                        <rect className={this.props.room.state ? "notFreeRoom" : "freeRoom"} width="100" height="100"
+                              x={this.props.room.coordinates.x} y={this.props.room.coordinates.y}
+                              onClick={this.onMapClick.bind(this, 'na')}
+                        />
 
-                           </g>
-
-                </svg>
-            </div>
         );
     };
 
 }
 
-export  default Room;
+export default Room;

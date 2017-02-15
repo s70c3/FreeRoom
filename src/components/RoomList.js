@@ -1,15 +1,13 @@
 /**
- * Created by s70c3 on 31.01.17.
+ * Created by s70c3 on 15.02.17.
  */
 import React, {Component} from 'react';
-import '../styles/Map.css';
 import {connect} from 'react-redux';
 import '../styles/Roomlist.css';
 
 import * as roomApi from '../api/roomAPI';
 
-
-class StatsPage extends Component {
+class RoomList extends Component {
 
     componentDidMount() {
         roomApi.getRooms();
@@ -22,28 +20,33 @@ class StatsPage extends Component {
         let minute = date.getMinutes();
         let weekDay = date.getDay();
         if (weekDay === 0) weekDay = 7;
-        let total = 0, occupied = 0;
 
         this.props.rooms.map(room => {
             room.occupation.map(occ => {
-                    if (occ !== null) {
-                        if (hour >= occ.startHour && minute >= occ.startMinute) {
+                    if(occ!==null)  {
+                        if (hour >= occ.startHour && minute >= occ.startMinute ) {
                             console.log(hour < occ.endHour, hour, occ.endHour);
-                            if (hour < occ.endHour || (hour === occ.endHour && minute <= occ.endMinute)) {
+                            if ( hour < occ.endHour ||  (hour === occ.endHour && minute <= occ.endMinute)) {
                                 room.state = true;
-                                occupied++;
                             }
                         }
                     }
                 }
             )
-            total++;
         });
 
+
         return (
-            <p>Сейчас свободно:
-                {(total-occupied) / total * 100}% аудиторий.
-            </p>
+                <ul className="room-list">
+                    {this.props.rooms.map(room => {
+                        return (
+                            <li key={room._id} className={room.state ? "notFreeRoom" : "freeRoom"} >
+                                Аудитория: {room.number} - {room.state ? "занята" : "свободна"}
+                                </li>
+                        )
+                    })
+                    }
+                </ul>
         );
     }
 
@@ -56,5 +59,4 @@ const mapStateToProps = function (store) {
     };
 };
 
-export default connect(mapStateToProps)(StatsPage);
-
+export default connect(mapStateToProps)(RoomList);

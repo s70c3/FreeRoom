@@ -8,7 +8,6 @@ import '../styles/Grid.css';
 class Grid extends  React.Component {
    // var vCoord;
     //var hCoord;
-    
 
     render () {
         return(
