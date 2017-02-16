@@ -9,7 +9,7 @@ class Room extends Component {
     constructor(props) {
         super(props);
         this.state = {clicked: 'none'}
-
+console.log(this);
     }
 
     componentDidMount() {
@@ -57,13 +57,15 @@ class Room extends Component {
         this.changeCss();
         return (    <g>
                         <rect className={this.props.room.state ? "notFreeRoom" : "freeRoom"}
-                              x={this.props.room.coordinates.x*this.rectWidth} y={this.props.room.coordinates.y*this.rectWidth}
-                              width={this.rectWidth} height={this.rectWidth}
+                              x={this.props.room.coordinates.x*this.props.rectWidth}
+                              y={this.props.room.coordinates.y*this.props.rectWidth}
+                              width={this.props.rectWidth}
+                              height={this.props.rectWidth}
                               onClick={this.onMapClick.bind(this, 'na')}
                         />
                 <text  className="roomText"
-                       x={this.props.room.coordinates.x*this.rectWidth+this.rectWidth/2-10}
-                       y={this.props.room.coordinates.y*this.rectWidth+this.rectWidth/2+5}>
+                       x={this.props.room.coordinates.x*this.props.rectWidth+this.props.rectWidth/2-10}
+                       y={this.props.room.coordinates.y*this.props.rectWidth+this.props.rectWidth/2+5}>
                     {this.props.room.number}
                     </text>
             </g>

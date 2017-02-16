@@ -45,23 +45,43 @@ class Map extends Component {
         var k=0;
         for(var i = 0; i<this.width; i+=this.rectWidth) {
             xCoords.push(k);
+            k++;
         }
         k=0;
         for(i = 0; i<this.height; i+=this.rectWidth) {
             yCoords.push(k);
+            k++;
         }
 
 
         return (
             <div className="map-layout">
                 <svg className="map">
-                    {this.props.rooms.map(room => {
+                    {xCoords.map(x => {
                         return (
-                            <Room key={room._id} room={room} width={this.width} height={this.height}/>
-                        )
+                            <text key={x} className="coords"
+                                   x={x*this.rectWidth+this.rectWidth/2}
+                                   y={this.rectWidth/2}>
+                                {x}
+                            </text>  )
+                    })
+                    }
+                    {yCoords.map(y => {
+                        return (
+                            <text key={y} className="coords"
+                                   y={y*this.rectWidth+this.rectWidth/2}
+                                   x={this.rectWidth/2}>
+                                {y}
+                            </text>  )
                     })
                     }
 
+                    {this.props.rooms.map(room => {
+                        return (
+                            <Room key={room._id} room={room} rectWidth={this.rectWidth} />
+                        )
+                    })
+                    }
                 </svg>
         {this.props.children}
             </div>
