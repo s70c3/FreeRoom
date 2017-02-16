@@ -12,10 +12,16 @@ class Map extends Component {
 
     componentDidMount() {
         roomApi.getRooms();
+        this.width = window.innerWidth;
+        this.height = window.innerHeight;
+        if (this.width<400) {
+            this.rectWidth=40;
+        }
+        else this.rectWidth=60;
+
     }
 
     render() {
-
         let date = new Date();
         let hour = date.getHours();
         let minute = date.getMinutes();
@@ -26,9 +32,7 @@ class Map extends Component {
             room.occupation.forEach(occ => {
                 if(occ!==null)  {
                 if (hour >= occ.startHour && minute >= occ.startMinute ) {
-                    console.log(hour < occ.endHour, hour, occ.endHour);
-                    if ( hour < occ.endHour ||  (hour === occ.endHour && minute <= occ.endMinute)) {
-                        console.log('hei');
+                    if ( hour < occ.endHour || (hour === occ.endHour && minute <= occ.endMinute)) {
                         room.state = true;
                     }
                 }
@@ -36,18 +40,30 @@ class Map extends Component {
             }
             )
         });
+        var xCoords=[];
+        var yCoords=[];
+        var k=0;
+        for(var i = 0; i<this.width; i+=this.rectWidth) {
+            xCoords.push(k);
+        }
+        k=0;
+        for(i = 0; i<this.height; i+=this.rectWidth) {
+            yCoords.push(k);
+        }
 
 
         return (
-            <div className="map-list">
+            <div className="map-layout">
                 <svg className="map">
                     {this.props.rooms.map(room => {
                         return (
-                            <Room key={room._id} room={room}/>
+                            <Room key={room._id} room={room} width={this.width} height={this.height}/>
                         )
                     })
                     }
+
                 </svg>
+        {this.props.children}
             </div>
         );
     }

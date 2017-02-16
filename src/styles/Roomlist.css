@@ -1,6 +1,9 @@
-.freeRoom {
+.freeRoomListItem {
     color: green;
 }
-.notFreeRoom {
+.notFreeRoomListItem {
     color: red;
+}
+ul {
+    list-style: none;
 }

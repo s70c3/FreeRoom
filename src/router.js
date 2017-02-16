@@ -17,11 +17,12 @@ import StatsPage from './components/StatsPage';
 export default (
 <Router history={ browserHistory }>
     <Route component={App} >
-        <Route path="/map" component={Map} />
+        <Route component={Map}>
         <Route path="/add" component={OccupationForm} />
         <Route path="/room" component={RoomForm} />
         <Route path="/list" component={RoomList} />
         <Route path="/stats" component={StatsPage} />
+        </Route>
     </Route>
 </Router>
 );

@@ -3,7 +3,7 @@
  */
 import axios from 'axios';
 import store from '../store';
-import { getRoomsSuccess, deleteRoomSuccess, getRoomSuccess, addRoomSuccess, addOccupationSuccess, getOccupationSuccess, getOccupationsSuccess } from '../actions/roomActions';
+import { getRoomsSuccess, deleteRoomSuccess, getRoomSuccess, addRoomSuccess, addOccupationSuccess, getOccupationSuccess } from '../actions/roomActions';
 
 /**
  * Get all users

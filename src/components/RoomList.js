@@ -40,7 +40,7 @@ class RoomList extends Component {
                 <ul className="room-list">
                     {this.props.rooms.map(room => {
                         return (
-                            <li key={room._id} className={room.state ? "notFreeRoom" : "freeRoom"} >
+                            <li key={room._id} className={room.state ? "notFreeRoomListItem" : "freeRoomListItem"} >
                                 Аудитория: {room.number} - {room.state ? "занята" : "свободна"}
                                 </li>
                         )

@@ -1,0 +1,6 @@
+.grid {
+    z-index: -1;
+}
+.grid__rect {
+    stroke: grey;
+}
