@@ -3,7 +3,7 @@
  */
 import axios from 'axios';
 import store from '../store';
-import { getRoomsSuccess, deleteRoomSuccess, getRoomSuccess, addRoomSuccess, addOccupationSuccess, getOccupationSuccess } from '../actions/roomActions';
+import { getRoomsSuccess, deleteRoomSuccess, getRoomSuccess, addRoomSuccess, addOccupationSuccess} from '../actions/roomActions';
 
 /**
  * Get all users
@@ -14,6 +14,9 @@ export function getRooms() {
         .then(response => {
             store.dispatch(getRoomsSuccess(response.data));
             return response;
+        })
+        .catch(function() {
+            window.alert("Getting failed")
         });
 }
 
@@ -41,6 +44,9 @@ export function addRoom(number, x, y, state, occupation) {
         .then(response => {
             store.dispatch(addRoomSuccess(response.data));
             return response;
+        })
+        .catch(function() {
+            window.alert("Adding failed")
         });
 }
 
@@ -53,6 +59,9 @@ export function addOccupation(number,  occupation) {
         .then(response => {
             store.dispatch(addOccupationSuccess(response.data));
             return response;
+        })
+        .catch(function() {
+            window.alert("Adding failed")
         });
 }
 

@@ -17,10 +17,10 @@ export function deleteRoomSuccess(roomNumber) {
     };
 }
 
-export function getRoomSuccess(room) {
+export function getRoomSuccess(rooms) {
     return {
         type: types.GET_ROOM_SUCCESS,
-        room
+        rooms
     };
 }
 

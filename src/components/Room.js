@@ -9,7 +9,6 @@ class Room extends Component {
     constructor(props) {
         super(props);
         this.state = {clicked: 'none'}
-console.log(this);
     }
 
     componentDidMount() {

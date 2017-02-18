@@ -18,7 +18,11 @@ class Map extends Component {
             this.rectWidth=40;
         }
         else this.rectWidth=60;
+    }
 
+
+    componentWillReceiveProps(nextProps) {
+        console.log('will receive props');    // 1
     }
 
     render() {
@@ -96,5 +100,6 @@ const mapStateToProps = function (store) {
         rooms: store.roomState.rooms
     };
 };
+
 
 export default connect(mapStateToProps)(Map);

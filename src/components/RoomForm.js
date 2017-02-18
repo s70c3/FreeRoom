@@ -3,7 +3,7 @@
  */
 import React, { Component } from 'react';
 import '../styles/form.css';
-
+import {connect} from 'react-redux';
 import * as roomApi from '../api/roomAPI';
 
 
@@ -35,7 +35,6 @@ class RoomForm extends Component {
     }
 
     handleSubmit() {
-        console.log(this.state);
         roomApi.addRoom(this.state.number,this.state.x, this.state.y, false);
     }
     render() {
@@ -70,4 +69,12 @@ class RoomForm extends Component {
     }
 }
 
-export  default RoomForm;
+
+const mapStateToProps = function (store) {
+    return {
+        rooms: store.roomState.rooms
+    };
+};
+
+export default connect(mapStateToProps)(RoomForm);
+/*export  default RoomForm;*/
