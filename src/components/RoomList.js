@@ -16,19 +16,19 @@ class RoomList extends Component {
     render() {
 
         let date = new Date();
-        let hour = date.getHours();
+        let hour = date.getHourss();
         let minute = date.getMinutes();
         let weekDay = date.getDay();
         if (weekDay === 0) weekDay = 7;
 
-        this.props.rooms.map(room => {
+        var freeRooms = this.props.rooms.map(room => {
             room.occupation.map(occ => {
                     if(occ!==null)  {
-                        if (weekDay == occ.dayOfWeek) {
+                        if (weekDay === occ.dayOfWeek) {
                             if (hour >= occ.startHour && minute >= occ.startMinute) {
                                 console.log(hour < occ.endHour, hour, occ.endHour);
                                 if (hour < occ.endHour || (hour === occ.endHour && minute <= occ.endMinute)) {
-                                    room.state = true;
+                                    return room;
                                 }
                             }
                         }
@@ -37,10 +37,12 @@ class RoomList extends Component {
             )
         });
 
+        console.log(freeRooms);
+
 
         return (
                 <ul className="room-list">
-                    {this.props.rooms.map(room => {
+                    {freeRooms.map(room => {
                         return (
                             <li key={room._id} className={room.state ? "notFreeRoomListItem" : "freeRoomListItem"} >
                                 Аудитория: {room.number} - {room.state ? "занята" : "свободна"}

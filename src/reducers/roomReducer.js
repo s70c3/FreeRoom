@@ -11,7 +11,6 @@ const initialState = {
         hour: undefined,
         minute: undefined,
         weekDay: undefined
-
     }
 };
 
@@ -27,7 +26,7 @@ const roomReducer = function(state = initialState, action) {
 
         case types.DELETE_ROOM_SUCCESS:
 
-            const newRooms = _.filter(state.rooms, room => room.number !== parseInt(action.roomNumber));
+            const newRooms = _.filter(state.rooms, room => room.number !== parseInt(action.roomNumber, 10));
             return  { ...state, rooms: newRooms};
 
         case types.ADD_OCCUPATION_SUCCESS:

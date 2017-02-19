@@ -34,8 +34,9 @@ class RoomForm extends Component {
        this.setState({[event.target.name] : event.target.value});
     }
 
-    handleSubmit() {
+    handleSubmit(e) {
         roomApi.addRoom(this.state.number,this.state.x, this.state.y, false);
+        e.preventDefault();
     }
     render() {
         return (
@@ -62,7 +63,7 @@ class RoomForm extends Component {
                             name="y"
                             onChange={this.handleChange}
                         /></label>
-                    <input type="submit" value="Submit"  onClick={this.handleSubmit} />
+                    <input type="submit" value="Добавить"  onClick={this.handleSubmit} />
                 </form>
             </div>
         );

@@ -25,8 +25,9 @@ class Delete extends Component {
         this.setState({[event.target.name] : event.target.value});
     }
 
-    handleSubmit() {
+    handleSubmit(e) {
         roomApi.deleteRoom(this.state.number);
+    e.preventDefault();
     }
     render() {
         return (

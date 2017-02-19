@@ -20,7 +20,6 @@ export function getRooms() {
         });
 }
 
-
 /**
  * Search users
  */
@@ -44,7 +43,7 @@ export function addRoom(number, x, y, state, occupation) {
         .then(response => {
             store.dispatch(addRoomSuccess(response.data));
             window.alert("Аудитория добавлена. :)");
-            return response;
+            return response.data;
         })
         .catch(response => {
             window.alert("Не удалось добавить аудиторию.\n"+response);
@@ -52,15 +51,16 @@ export function addRoom(number, x, y, state, occupation) {
 }
 
 export function addOccupation(number,  occupation) {
-    console.log(occupation);
+
     return axios.put('http://localhost:1337/rooms/'+number, {
         occupation: occupation,
 
     })
         .then(response => {
             store.dispatch(addOccupationSuccess(response.data));
+            console.log(response);
             window.alert("Аудитория занята. :)");
-            return response;
+            return response.date;
         })
         .catch(response => {
             window.alert("Не удалось занять аудиторию.\n"+response);
@@ -76,6 +76,7 @@ export function deleteRoom(roomNumber) {
 }
 
 export function setDate(date) {
+    console.log('set',date);
    return store.dispatch(setDateSuccess(date));
 
 }

@@ -10,46 +10,57 @@ import * as roomApi from '../api/roomAPI';
 class Main extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
-            number: '200',
-            date:'',
-            startHour: '7',
-            startMinute: '0',
-            endHour: '7',
-            endMinute: '0',
-            dayOfWeek: '1'
+            date: '',
+            hour: '',
+            minute: '',
+            weekDay: ''
 
         };
 
+        let date = new Date();
+        let dateTotal = {
+            date : date,
+            hour:  date.getHours(),
+            minute : date.getMinutes(),
+            weekDay : this.getDayName(date.getDay())
+
+        };
+        roomApi.setDate(dateTotal);
+
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
     }
     handleChange(event) {
-
             this.setState({[event.target.name] : event.target.value});
     }
-
+    handleSelect(event) {
+        let index = event.target.selectedIndex;
+        this.setState({[event.target.name] : event.target.options[index].value});
+    }
     handleSubmit() {
-        var dateTotal = {
+        let dateTotal = {
             date : this.state.date,
-            weekDay : this.state.weekDay,
-           hour: this.state.hour,
-            minute : this.state.minute
+            hour: this.state.hour,
+            minute : this.state.minute,
+            weekDay : this.state.weekDay
 
         }
         roomApi.setDate(dateTotal);
     }
 
+    getDayName(number) {
+        let names = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота' ];
+        return names[number];
+    }
+
     render() {
-        var dateString = "";
-        if(this.props.dateTotal.hour === undefined) {
-            var date = new Date();
-                dateString=date.getDay()+" "+date.getHours()+":"+date.getMinutes();
-        }
-        else {
-            console.log('pumpurum');
-            dateString = this.props.dateTotal.date+" "+ this.props.dateTotal.weekDay+ " "+ this.props.dateTotal.hour+ ":"+this.props.dateTotal.minute;
-        }
+        console.log('props', this.props);
+
+           let dateString = this.props.dateTotal.date+" "+ this.props.dateTotal.weekDay+ " "+ this.props.dateTotal.hour+ ":"+this.props.dateTotal.minute;
+
         return (
             <div className="Add-container">
                 <p> Запрошенное время: {dateString}</p>
@@ -61,7 +72,7 @@ class Main extends Component {
                         <label className="room-form_item"><p>День недели:</p>
                             <select type="number"
                                    name="weekDay"
-                                   onChange={this.handleChange}
+                                   onChange={this.handleSelect}
                             >
                              <option value="понедельник">понедельник</option>
                                 <option value={"вторник"}>вторник</option>

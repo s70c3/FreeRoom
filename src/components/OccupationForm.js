@@ -18,21 +18,30 @@ class OccupationForm extends Component {
                 startMinute: '0',
                 endHour: '7',
                 endMinute: '0',
-                dayOfWeek: '1'
+                dayOfWeek: null
 
 
 
         };
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleChange(event) {
+
         this.setState({[event.target.name] : event.target.value});
     }
 
-    handleSubmit() {
-        var occupation = {
+    handleSelect(event) {
+
+        let index = event.target.selectedIndex;
+        this.setState({[event.target.name] : event.target.options[index].value});
+    }
+
+    handleSubmit(e) {
+        console.log(this);
+        let occupation = {
             date: this.state.date,
             startHour: this.state.startHour,
             startMinute: this.state.startMinute,
@@ -40,8 +49,9 @@ class OccupationForm extends Component {
             endMinute: this.state.endMinute,
             dayOfWeek: this.state.dayOfWeek
 
-        }
+        };
         roomApi.addOccupation(this.state.number, occupation);
+        e.preventDefault();
     }
     render() {
         return (
@@ -52,20 +62,21 @@ class OccupationForm extends Component {
                             type="number"
                             name="number"
                             onChange={this.handleChange}
+                            autoFocus="true"
                         /></label>
-                    <p>
                     <label className="room-form_item">
                         <p>Дата:</p>
                         <input type="date" name="date" /></label>
                     <p>или</p>
-                    <label className="room-form_item"><p>День недели:</p>
-                        <input type="number"
-                               name="dayOfWeek"
-                               min={1}
-                               max={7}
-                               onChange={this.handleChange}
-                    /></label>
-                    </p>
+                    <select name="dayOfWeek" onChange={this.handleSelect}>
+                    <option value="понедельник">понедельник</option>
+                    <option value="вторник">вторник</option>
+                    <option value="среда">среда</option>
+                    <option value="четверг" >четверг</option>
+                    <option value="пятница">пятница</option>
+                    <option value="суббота" >суббота</option>
+                    <option value="воскресенье">воскресенье</option>
+                </select>
                     <label className="room-form_item"><p>Время начала:</p>
                       <p>  <input
                             type="number"

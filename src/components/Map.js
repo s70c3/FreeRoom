@@ -15,7 +15,6 @@ class Map extends Component {
         this.state = {clicked: 'none'}
     }
     componentDidMount() {
-        roomApi.setDate(new Date());
         roomApi.getRooms();
         this.width = window.innerWidth;
         this.height = window.innerHeight;
@@ -26,28 +25,31 @@ class Map extends Component {
 
     }
 
+    getDayName(number) {
+        let names = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+        return names[number];
+    }
+
     render() {
-    console.log(this.props);
         let date = this.props.dateTotal;
+        var hour, minute, weekDay;
         if(date === undefined) {
             date = new Date();
-            var hour = date.getHours();
-            var minute = date.getMinutes();
-            let weekDay = date.getDay();
-            if (weekDay === 0) weekDay = 7;
+            hour = date.getHours();
+            minute = date.getMinutes();
+            weekDay = this.getDayName(date.getDay());
         }
         else {
-            var hour = date.hour;
-            var minute = date.minute;
-            var weekDay = date.weekDay;
-
+            hour = date.hour;
+            minute = date.minute;
+            weekDay = date.weekDay;
         }
 
         this.props.rooms.forEach(room => {
             room.occupation.forEach(occ => {
                     if(occ!==null) {
-                        if (weekDay == occ.dayOfWeek) {
-
+                        console.log(weekDay, occ.dayOfWeek)
+                        if (weekDay === occ.dayOfWeek || date === occ.date) {
                         if (hour >= occ.startHour && minute >= occ.startMinute) {
                             if (hour < occ.endHour || (hour === occ.endHour && minute <= occ.endMinute)) {
                                 room.state = true;
@@ -84,7 +86,7 @@ class Map extends Component {
 
                     {xCoords.map(x => {
                         return (
-                            <text key={x} className="coords"
+                            <text key={x+"xcoord"} className="coords"
                                    x={x*this.rectWidth+2}
                                    y={'1em'}>
                                 {x}
@@ -93,7 +95,7 @@ class Map extends Component {
                     }
                     {yCoords.map(y => {
                         return (
-                            <text key={y} className="coords"
+                            <text key={y+"ycoord"} className="coords"
                                    y={y*this.rectWidth+12}
                                    x={0}>
                                 {y}
