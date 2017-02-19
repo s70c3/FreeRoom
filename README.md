@@ -24,9 +24,10 @@ FreeRoom App
 
 NB! Для работы приложения необходимо иметь запущенную базу данных FreeRoomBase.
  Для её работы должны быть установлены mongodb и redis. В дальнейшем база будет переведена из локального варианта в глоабльный.
+
     ```shell
         git clone https://github.com/s70c3/FreeRoomBase.git
         cd FreeRoomBase
         npm install
         npm start
-        ```
+     ```
