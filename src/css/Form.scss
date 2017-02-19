@@ -1,0 +1,26 @@
+@mixin border-radius($radius,$border,$color) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+    border:$border solid $color
+}
+
+.Add-time {
+    width: 30px;
+}
+label {
+    display: block;
+}
+
+.Add-container {
+   width: 250px;
+    padding: 10px;
+    @include border-radius(10px,1px, #4a5a1c);
+}
+
+.room-form_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

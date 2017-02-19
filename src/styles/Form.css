@@ -1,16 +1,19 @@
 .Add-time {
-    width: 30px;
-}
+  width: 30px; }
+
 label {
-    display: block;
-}
+  display: block; }
 
 .Add-container {
-   width: 250px;
-}
+  width: 250px;
+  padding: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+  border: 1px solid #4a5a1c; }
 
 .room-form_item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }

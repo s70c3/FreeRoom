@@ -1,16 +1,9 @@
-
 .freeRoom {
-    fill: #cad473;
-}
+  fill: #cad473; }
+  .freeRoom + .roomText {
+    fill: #4a5a1c; }
+
 .notFreeRoom {
-    fill: #87232f;
-}
-
-.freeRoom + .roomText {
-    /*color: #4a5a1c;*/
-    color: white;
-}
-
-.notFreeRoom + .roomText {
-    color: white;
-}
+  fill: #87232f; }
+  .notFreeRoom + .roomText {
+    fill: white; }

@@ -1,0 +1,44 @@
+
+.circle-progress-bar {
+    width: 210px;
+    height: 210px;
+    display: block;
+    position: relative;
+    margin: auto;
+.circle-svg {
+
+    transform: rotate(-90deg);
+    width: 210px;
+    height: 210px;
+}
+.cpb-progress:hover {
+     animation: dash 0.5s linear alternate;
+ }
+
+.cpb-value {
+    margin: 0;
+    position: absolute;
+    top: 35%;
+    left: 25%;
+    font-size: 3em;
+    color: #4a5a1c;
+}
+
+}
+
+
+@media screen and (max-width: 450px) {
+    .circle-progress-bar {
+        width: 210px;
+        height: 210px;
+        display: block;
+        position: relative;
+        margin: auto;
+    }
+}
+
+.cpb-container {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+}

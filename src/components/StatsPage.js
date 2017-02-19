@@ -24,8 +24,8 @@ class StatsPage extends Component {
         if (weekDay === 0) weekDay = 7;
         let total = 0, occupied = 0;
 
-        this.props.rooms.map(room => {
-            room.occupation.map(occ => {
+        this.props.rooms.forEach(room => {
+            room.occupation.forEach(occ => {
                     if (occ !== null) {
                         if(weekDay===occ.dayOfWeek) {
                         if (hour >= occ.startHour && minute >= occ.startMinute) {

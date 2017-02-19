@@ -15,7 +15,7 @@ class Main extends Component {
             date: '',
             hour: '',
             minute: '',
-            weekDay: ''
+            weekDay: 'понедельник'
 
         };
 
@@ -74,7 +74,8 @@ class Main extends Component {
                                    name="weekDay"
                                    onChange={this.handleSelect}
                             >
-                             <option value="понедельник">понедельник</option>
+                             <option value="понедельник"
+                             default="true">понедельник</option>
                                 <option value={"вторник"}>вторник</option>
                                 <option value="среда">среда</option>
                                 <option value="четверг" >четверг</option>

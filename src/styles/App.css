@@ -1,7 +1,6 @@
 .App {
   text-align: center;
-}
-
+  height: 100%; }
 
 header {
   background-color: #222;
@@ -11,36 +10,49 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-flow: wrap;
-}
+  flex-flow: wrap; }
 
 @media screen and (max-width: 400px) {
   header {
-    padding: 5px;
-  }
-}
+    padding: 5px; } }
+
 h3 {
-  margin: 0px;
-}
+  margin: 0px; }
 
 .menu__item {
   display: flex;
   flex-flow: wrap;
   justify-content: space-between;
   margin-left: 10px;
+  color: white; }
+
+.menu-item__link {
   color: white;
-}
+  text-decoration: none; }
+  .menu-item__link :visited {
+    color: lightgray; }
+  .menu-item__link :hover {
+    color: #cad473; }
 
-.menu-item__link:visited {
-  color: lightgray;
-}
+.tip {
+  font-size: 0.8em;
+  flex-basis: 40%;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+  border: 1px solid #4a5a1c; }
 
-.menu-item__link:hover {
-  color: #cad473;
-}
+.intro {
+  flex-basis: 50%; }
 
 nav {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row wrap; }
 
-}
+footer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  flex: 0 0 auto;
+  padding: 20px; }

@@ -14,6 +14,7 @@ class Map extends Component {
         super(props);
         this.state = {clicked: 'none'}
     }
+
     componentDidMount() {
         roomApi.getRooms();
         this.width = window.innerWidth;
@@ -48,7 +49,6 @@ class Map extends Component {
         this.props.rooms.forEach(room => {
             room.occupation.forEach(occ => {
                     if(occ!==null) {
-                        console.log(weekDay, occ.dayOfWeek)
                         if (weekDay === occ.dayOfWeek || date === occ.date) {
                         if (hour >= occ.startHour && minute >= occ.startMinute) {
                             if (hour < occ.endHour || (hour === occ.endHour && minute <= occ.endMinute)) {
@@ -87,8 +87,8 @@ class Map extends Component {
                     {xCoords.map(x => {
                         return (
                             <text key={x+"xcoord"} className="coords"
-                                   x={x*this.rectWidth+2}
-                                   y={'1em'}>
+                                   x={x*this.rectWidth+5}
+                                   y={'1.5em'}>
                                 {x}
                             </text>  )
                     })
@@ -97,7 +97,7 @@ class Map extends Component {
                         return (
                             <text key={y+"ycoord"} className="coords"
                                    y={y*this.rectWidth+12}
-                                   x={0}>
+                                   x={5}>
                                 {y}
                             </text>  )
                     })

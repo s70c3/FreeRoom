@@ -1,0 +1,39 @@
+@mixin border-radius($radius,$border,$color) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+    border:$border solid $color
+}
+.map {
+    height: auto;
+    min-height: 240px;
+    min-width: 300px;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60'><rect x='0' y='0' width='60px' height='60px' fill='white' stroke='#f0f0f0' /></svg>")  repeat;
+    color: #f0f0f0;
+    flex-basis: 70%;
+    @include border-radius(10px,1px, lightgrey);
+}
+
+.map-layout {
+    margin: 20px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content:space-between;
+}
+
+.coords {
+    font-size: 0.6em;
+    fill-opacity: 0.3;
+}
+
+@media screen and (max-width: 450px) {
+    .map {
+        background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><rect x='0' y='0' width='40px' height='40px' fill='white' stroke='#f0f0f0' /></svg>") repeat;
+        flex-basis: 100%;
+    }
+    .map-layout {
+        justify-content:center;
+        align-content: center;
+    }
+}

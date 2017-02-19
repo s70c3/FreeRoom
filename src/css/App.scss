@@ -1,0 +1,77 @@
+@mixin border-radius($radius,$border,$color) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+    border:$border solid $color
+}
+
+
+.App {
+    text-align: center;
+    height: 100%;
+}
+
+
+header {
+    background-color: #222;
+    flex-basis: 80px;
+    padding: 30px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: wrap;
+
+}
+
+@media screen and (max-width: 400px) {
+    header {
+        padding: 5px;
+    }
+}
+
+h3 {
+    margin: 0px;
+}
+
+.menu__item {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+    margin-left: 10px;
+    color: white;
+}
+.menu-item__link {
+    color: white;
+    text-decoration: none;
+    :visited {
+        color: lightgray;
+    }
+    :hover {
+        color: #cad473;
+    }
+}
+
+
+.tip {
+  font-size: 0.8em;
+    flex-basis: 40%;
+    @include border-radius(10px,1px, #4a5a1c);
+}
+.intro {
+    flex-basis: 50%;
+}
+nav {
+    display: flex;
+    flex-flow: row wrap;
+
+}
+
+footer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    flex: 0 0 auto;
+    padding: 20px;
+}
