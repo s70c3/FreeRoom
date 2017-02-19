@@ -3,7 +3,7 @@
  */
 import axios from 'axios';
 import store from '../store';
-import { getRoomsSuccess, deleteRoomSuccess, getRoomSuccess, addRoomSuccess, addOccupationSuccess} from '../actions/roomActions';
+import { getRoomsSuccess, deleteRoomSuccess, getRoomSuccess, addRoomSuccess, addOccupationSuccess, setDateSuccess} from '../actions/roomActions';
 
 /**
  * Get all users
@@ -15,8 +15,8 @@ export function getRooms() {
             store.dispatch(getRoomsSuccess(response.data));
             return response;
         })
-        .catch(function() {
-            window.alert("Getting failed")
+        .catch(response => {
+            window.alert("Не удалось получить список аудиторий.\n"+response);
         });
 }
 
@@ -43,10 +43,11 @@ export function addRoom(number, x, y, state, occupation) {
     })
         .then(response => {
             store.dispatch(addRoomSuccess(response.data));
+            window.alert("Аудитория добавлена. :)");
             return response;
         })
-        .catch(function() {
-            window.alert("Adding failed")
+        .catch(response => {
+            window.alert("Не удалось добавить аудиторию.\n"+response);
         });
 }
 
@@ -58,10 +59,11 @@ export function addOccupation(number,  occupation) {
     })
         .then(response => {
             store.dispatch(addOccupationSuccess(response.data));
+            window.alert("Аудитория занята. :)");
             return response;
         })
-        .catch(function() {
-            window.alert("Adding failed")
+        .catch(response => {
+            window.alert("Не удалось занять аудиторию.\n"+response);
         });
 }
 
@@ -71,4 +73,9 @@ export function deleteRoom(roomNumber) {
             store.dispatch(deleteRoomSuccess(roomNumber));
             return response;
         });
+}
+
+export function setDate(date) {
+   return store.dispatch(setDateSuccess(date));
+
 }

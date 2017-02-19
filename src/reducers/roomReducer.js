@@ -6,6 +6,13 @@ import _ from 'lodash';
 
 const initialState = {
     rooms: [],
+    dateTotal:  {
+        date: undefined,
+        hour: undefined,
+        minute: undefined,
+        weekDay: undefined
+
+    }
 };
 
 const roomReducer = function(state = initialState, action) {
@@ -19,17 +26,20 @@ const roomReducer = function(state = initialState, action) {
             };
 
         case types.DELETE_ROOM_SUCCESS:
-            const newRooms = _.filter(state.rooms, room => room.id !== action.roomNumber);
-            return  { ...state,
-                rooms: newRooms
-            };
+
+            const newRooms = _.filter(state.rooms, room => room.number !== parseInt(action.roomNumber));
+            return  { ...state, rooms: newRooms};
 
         case types.ADD_OCCUPATION_SUCCESS:
-            return Object.assign({}, state, { room: action.room });
+            const roomsWithOccupations = state.rooms.concat(action.room);
+            return {...state,  rooms: roomsWithOccupations};
 
         case types.ADD_ROOM_SUCCESS:
             const roomsWithAdded = state.rooms.concat(action.room);
             return {...state,  rooms: roomsWithAdded};
+
+        case types.SET_DATE:
+            return {...state, dateTotal: action.date};
 
         default:
             return state;

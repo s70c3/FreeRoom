@@ -24,10 +24,12 @@ class RoomList extends Component {
         this.props.rooms.map(room => {
             room.occupation.map(occ => {
                     if(occ!==null)  {
-                        if (hour >= occ.startHour && minute >= occ.startMinute ) {
-                            console.log(hour < occ.endHour, hour, occ.endHour);
-                            if ( hour < occ.endHour ||  (hour === occ.endHour && minute <= occ.endMinute)) {
-                                room.state = true;
+                        if (weekDay == occ.dayOfWeek) {
+                            if (hour >= occ.startHour && minute >= occ.startMinute) {
+                                console.log(hour < occ.endHour, hour, occ.endHour);
+                                if (hour < occ.endHour || (hour === occ.endHour && minute <= occ.endMinute)) {
+                                    room.state = true;
+                                }
                             }
                         }
                     }

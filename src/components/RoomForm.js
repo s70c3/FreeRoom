@@ -2,7 +2,7 @@
  * Created by s70c3 on 14.02.17.
  */
 import React, { Component } from 'react';
-import '../styles/form.css';
+import '../styles/Form.css';
 import {connect} from 'react-redux';
 import * as roomApi from '../api/roomAPI';
 
@@ -41,28 +41,28 @@ class RoomForm extends Component {
         return (
             <div className="Add-container">
                 <form className="room-form">
-                    <label>Номер:
+                    <label className="room-form_item"><p>Номер:</p>
                         <input
                             type="number"
                             name="number"
                             onChange={this.handleChange}
                         /></label>
                     <p>Координаты:</p>
-                    <label>
-                        x:
+                    <label className="room-form_item">
+                        <p>x:</p>
                         <input
                         type="number"
                         name="x"
                         onChange={this.handleChange}
                     /></label>
-                    <label>
-                        y:
+                    <label className="room-form_item">
+                        <p>y:</p>
                         <input
                             type="number"
                             name="y"
                             onChange={this.handleChange}
                         /></label>
-                    <input type="button" value="Submit"  onClick={this.handleSubmit} />
+                    <input type="submit" value="Submit"  onClick={this.handleSubmit} />
                 </form>
             </div>
         );

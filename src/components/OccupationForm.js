@@ -2,7 +2,7 @@
  * Created by s70c3 on 31.01.17.
  */
 import React, { Component } from 'react';
-import '../styles/form.css';
+import '../styles/Form.css';
 
 import * as roomApi from '../api/roomAPI';
 
@@ -28,25 +28,6 @@ class OccupationForm extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleChange(event) {
-
-        if (event.target.name === 'dayOfWeek') {
-            this.setState({dayOfWeek: event.target.value});
-        }
-
-        if (event.target.name === 'startHour') {
-            this.setState({startHour: event.target.value});
-        }
-
-        if (event.target.name === 'endHour') {
-            this.setState({endHour: event.target.value});
-        }
-        if (event.target.name === 'endMinute') {
-            this.setState({endMinute: event.target.value});
-        }
-        if (event.target.name === 'startMinute') {
-            this.setState({ startMinute: event.target.value});
-        }
-       else
         this.setState({[event.target.name] : event.target.value});
     }
 
@@ -66,25 +47,27 @@ class OccupationForm extends Component {
         return (
             <div className="Add-container">
                 <form className="Add-form">
-                    <label>Номер:
+                    <label className="room-form_item"><p>Номер:</p>
                         <input
                             type="number"
                             name="number"
                             onChange={this.handleChange}
                         /></label>
-                    <label>
-                        Дата:
-                        <input type="date" name="date"></input></label>
+                    <p>
+                    <label className="room-form_item">
+                        <p>Дата:</p>
+                        <input type="date" name="date" /></label>
                     <p>или</p>
-                    <label>День недели:
+                    <label className="room-form_item"><p>День недели:</p>
                         <input type="number"
                                name="dayOfWeek"
                                min={1}
                                max={7}
                                onChange={this.handleChange}
-                    ></input></label>
-                    <label>Время начала:
-                        <input
+                    /></label>
+                    </p>
+                    <label className="room-form_item"><p>Время начала:</p>
+                      <p>  <input
                             type="number"
                             placeholder="чч"
                             min={7}
@@ -101,10 +84,10 @@ class OccupationForm extends Component {
                             name="startMinute"
                             className="add__time"
                             onChange={this.handleChange}
-                        />
+                        /></p>
                     </label>
-                    <label>Время окончания:
-                        <input
+                    <label className="room-form_item"><p>Время окончания:</p>
+                      <p>  <input
                             type="number"
                             placeholder="чч"
                             min={7}
@@ -123,9 +106,9 @@ class OccupationForm extends Component {
                             className="add__time"
 
                             onChange={this.handleChange}
-                        />
+                        /></p>
                     </label>
-                    <input type="button" value="Submit"  onClick={this.handleSubmit} />
+                    <input type="submit" value="Submit"  onClick={this.handleSubmit} />
                 </form>
             </div>
         );

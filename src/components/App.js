@@ -2,7 +2,6 @@ import React, { Component} from 'react';
 import '../styles/App.css';
 
 import { Link } from 'react-router'
-import {Room} from './Room';
 class App extends Component {
 
 
@@ -17,14 +16,13 @@ class App extends Component {
                 <div className="menu__item"><Link to="/add" className="menu-item__link">Занять аудиторию</Link></div>
                 <div className="menu__item"><Link to="/room" className="menu-item__link">Добавить аудиторию</Link></div>
                 <div className="menu__item"><Link to="/stats" className="menu-item__link">Статистика</Link></div>
+                <div className="menu__item"><Link to="/delete" className="menu-item__link">Удалить аудиторию</Link></div>
             </nav>
             </header>
            {this.props.children}
             <p className="App-intro">
-                The application try to help you find a free room in Main Campus of ITMO University.
-                You can use the map to see enable rooms now or use a list of free room.
-                You can occupy room too.
-                At same time you can see a stats.
+                Добро пожаловать в приложение, показывающие свободные аудитории в главном корпусе университета ИТМО.
+
             </p>
         </div>
     );

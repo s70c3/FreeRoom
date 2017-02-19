@@ -10,7 +10,12 @@ import * as roomApi from '../api/roomAPI';
 
 class Map extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {clicked: 'none'}
+    }
     componentDidMount() {
+        roomApi.setDate(new Date());
         roomApi.getRooms();
         this.width = window.innerWidth;
         this.height = window.innerHeight;
@@ -18,30 +23,39 @@ class Map extends Component {
             this.rectWidth=40;
         }
         else this.rectWidth=60;
-    }
 
-
-    componentWillReceiveProps(nextProps) {
-        console.log('will receive props');    // 1
     }
 
     render() {
-        let date = new Date();
-        let hour = date.getHours();
-        let minute = date.getMinutes();
-        let weekDay = date.getDay();
-        if (weekDay === 0) weekDay = 7;
+    console.log(this.props);
+        let date = this.props.dateTotal;
+        if(date === undefined) {
+            date = new Date();
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            let weekDay = date.getDay();
+            if (weekDay === 0) weekDay = 7;
+        }
+        else {
+            var hour = date.hour;
+            var minute = date.minute;
+            var weekDay = date.weekDay;
+
+        }
 
         this.props.rooms.forEach(room => {
             room.occupation.forEach(occ => {
-                if(occ!==null)  {
-                if (hour >= occ.startHour && minute >= occ.startMinute ) {
-                    if ( hour < occ.endHour || (hour === occ.endHour && minute <= occ.endMinute)) {
-                        room.state = true;
+                    if(occ!==null) {
+                        if (weekDay == occ.dayOfWeek) {
+
+                        if (hour >= occ.startHour && minute >= occ.startMinute) {
+                            if (hour < occ.endHour || (hour === occ.endHour && minute <= occ.endMinute)) {
+                                room.state = true;
+                            }
+                        }
+                    }
                     }
                 }
-            }
-            }
             )
         });
         var xCoords=[];
@@ -51,7 +65,7 @@ class Map extends Component {
             xCoords.push(k);
             k++;
         }
-        k=0;
+        k=1;
         for(i = 0; i<this.height; i+=this.rectWidth) {
             yCoords.push(k);
             k++;
@@ -61,11 +75,18 @@ class Map extends Component {
         return (
             <div className="map-layout">
                 <svg className="map">
+                    {this.props.rooms.map(room => {
+                        return (
+                            <Room key={room._id} room={room} rectWidth={this.rectWidth} />
+                        )
+                    })
+                    }
+
                     {xCoords.map(x => {
                         return (
                             <text key={x} className="coords"
-                                   x={x*this.rectWidth+this.rectWidth/2}
-                                   y={this.rectWidth/2}>
+                                   x={x*this.rectWidth+2}
+                                   y={'1em'}>
                                 {x}
                             </text>  )
                     })
@@ -73,17 +94,10 @@ class Map extends Component {
                     {yCoords.map(y => {
                         return (
                             <text key={y} className="coords"
-                                   y={y*this.rectWidth+this.rectWidth/2}
-                                   x={this.rectWidth/2}>
+                                   y={y*this.rectWidth+12}
+                                   x={0}>
                                 {y}
                             </text>  )
-                    })
-                    }
-
-                    {this.props.rooms.map(room => {
-                        return (
-                            <Room key={room._id} room={room} rectWidth={this.rectWidth} />
-                        )
                     })
                     }
                 </svg>
@@ -97,7 +111,8 @@ class Map extends Component {
 
 const mapStateToProps = function (store) {
     return {
-        rooms: store.roomState.rooms
+        rooms: store.roomState.rooms,
+        dateTotal: store.roomState.dateTotal
     };
 };
 

@@ -39,9 +39,10 @@ export function addOccupationSuccess(room) {
 }
 
 
-export function getOccupationsSuccess(occupation) {
+
+export function setDateSuccess(date) {
     return {
-        type: types.GET_OCCUPATIONS_SUCCESS,
-        occupation
+        type: types.SET_DATE,
+        date
     };
 }

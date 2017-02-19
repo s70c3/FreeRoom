@@ -12,16 +12,19 @@ import OccupationForm from './components/OccupationForm';
 import RoomForm from './components/RoomForm';
 import RoomList from './components/RoomList';
 import StatsPage from './components/StatsPage';
-
+import  Main from './components/Main'
+import Delete from './components/Delete'
 
 export default (
 <Router history={ browserHistory }>
     <Route component={App} >
         <Route component={Map}>
+            <Route path="/" component={Main}/>
         <Route path="/add" component={OccupationForm} />
-        <Route path="/room" component={RoomForm} />
         <Route path="/list" component={RoomList} />
         <Route path="/stats" component={StatsPage} />
+            <Route path="/room" component={RoomForm} />
+            <Route path="/delete" component={Delete} />
         </Route>
     </Route>
 </Router>

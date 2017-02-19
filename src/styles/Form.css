@@ -1,0 +1,16 @@
+.Add-time {
+    width: 30px;
+}
+label {
+    display: block;
+}
+
+.Add-container {
+   width: 250px;
+}
+
+.room-form_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

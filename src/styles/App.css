@@ -2,29 +2,31 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
 
-.App-header {
+header {
   background-color: #222;
-  height: 100px;
+  flex-basis: 80px;
   padding: 30px;
   color: white;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-flow: wrap;
 }
 
-.App-intro {
-  font-size: large;
+@media screen and (max-width: 400px) {
+  header {
+    padding: 5px;
+  }
 }
 h3 {
   margin: 0px;
 }
 
 .menu__item {
-  display: inline-block;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
   margin-left: 10px;
   color: white;
 }
@@ -34,5 +36,11 @@ h3 {
 }
 
 .menu-item__link:hover {
-  color: lightgreen;
+  color: #cad473;
+}
+
+nav {
+  display: flex;
+  flex-flow: row wrap;
+
 }
