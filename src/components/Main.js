@@ -45,7 +45,7 @@ class Main extends Component {
 
     render() {
 
-         let dateString = this.props.dateTotal.weekDay+ " "+  (this.props.dateTotal.hour > 10 ? this.props.dateTotal.hour : "0"+this.props.dateTotal.hour )+":"+ (this.props.dateTotal.minute > 10 ? this.props.dateTotal.minute : "0"+this.props.dateTotal.minute );
+         let dateString = this.props.dateTotal.weekDay+ " "+  (this.props.dateTotal.hour > 9 ? this.props.dateTotal.hour : "0"+this.props.dateTotal.hour )+":"+ (this.props.dateTotal.minute > 9 ? this.props.dateTotal.minute : "0"+this.props.dateTotal.minute );
         return (
             <div className="Add-container">
                 <p> Запрошенное время: {dateString}</p>
