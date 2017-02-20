@@ -25,7 +25,7 @@ export function getRooms() {
  */
 
 export function getRoom(query = '') {
-    return axios.get('http://localhost:1337/rooms?q='+ query)
+    return axios.get('http://localhost:1337/rooms/'+ query)
         .then(response => {
             store.dispatch(getRoomSuccess(response.data));
             return response;
@@ -58,7 +58,6 @@ export function addOccupation(number,  occupation) {
     })
         .then(response => {
             store.dispatch(addOccupationSuccess(response.data));
-            console.log(response);
             window.alert("Аудитория занята. :)");
             return response.date;
         })

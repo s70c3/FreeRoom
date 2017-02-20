@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "dimensions": "^0.1.0",
     "gulp-sass": "^3.1.0",
     "gulp.sass": "^1.3.9",
     "react-scripts": "0.8.5",

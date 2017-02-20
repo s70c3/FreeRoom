@@ -41,6 +41,7 @@ class RoomForm extends Component {
     render() {
         return (
             <div className="Add-container">
+                <h3>Добавление</h3>
                 <form className="room-form">
                     <label className="room-form_item"><p>Номер:</p>
                         <input

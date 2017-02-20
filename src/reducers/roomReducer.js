@@ -24,6 +24,12 @@ const roomReducer = function(state = initialState, action) {
             rooms: action.rooms
             };
 
+        case types.GET_ROOM_SUCCESS:
+            return {
+                ...state,
+                room: action.room
+            };
+
         case types.DELETE_ROOM_SUCCESS:
 
             const newRooms = _.filter(state.rooms, room => room.number !== parseInt(action.roomNumber, 10));

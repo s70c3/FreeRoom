@@ -3,7 +3,7 @@
  */
 import React, { Component } from 'react';
 import '../styles/Form.css';
-
+import {connect} from 'react-redux';
 import * as roomApi from '../api/roomAPI';
 
 
@@ -56,6 +56,7 @@ class OccupationForm extends Component {
     render() {
         return (
             <div className="Add-container">
+                <h3>Занятие</h3>
                 <form className="Add-form">
                     <label className="room-form_item"><p>Номер:</p>
                         <input
@@ -69,7 +70,7 @@ class OccupationForm extends Component {
                         <input type="date" name="date" /></label>
                     <p>или</p>
                     <select name="dayOfWeek" onChange={this.handleSelect}>
-                    <option value="понедельник">понедельник</option>
+                    <option value="понедельник" default="true">понедельник</option>
                     <option value="вторник">вторник</option>
                     <option value="среда">среда</option>
                     <option value="четверг" >четверг</option>
@@ -126,4 +127,10 @@ class OccupationForm extends Component {
     }
 }
 
-export  default OccupationForm;
+const mapStateToProps = function (store) {
+    return {
+        rooms: store.roomState.rooms
+    };
+};
+
+export default connect(mapStateToProps)(OccupationForm);

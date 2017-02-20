@@ -11,6 +11,13 @@ class Main extends Component {
     constructor(props) {
         super(props);
 
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
+    }
+
+    componentWillMount() {
         this.state = {
             date: '',
             hour: '',
@@ -28,11 +35,8 @@ class Main extends Component {
 
         };
         roomApi.setDate(dateTotal);
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleSelect = this.handleSelect.bind(this);
     }
+
     handleChange(event) {
             this.setState({[event.target.name] : event.target.value});
     }
@@ -57,9 +61,7 @@ class Main extends Component {
     }
 
     render() {
-        console.log('props', this.props);
-
-           let dateString = this.props.dateTotal.date+" "+ this.props.dateTotal.weekDay+ " "+ this.props.dateTotal.hour+ ":"+this.props.dateTotal.minute;
+         let dateString = this.props.dateTotal.date+" "+ this.props.dateTotal.weekDay+ " "+ this.props.dateTotal.hour+ ":"+this.props.dateTotal.minute;
 
         return (
             <div className="Add-container">

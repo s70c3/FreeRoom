@@ -34,16 +34,16 @@ class App extends Component {
                     <header className="App-header">
                         <h3>FreeRoom App</h3>
                         <nav className="App-menu">
-                            <div className="menu__item"><Link to="/" className="menu-item__link">Главная</Link></div>
-                            <div className="menu__item"><Link to="/list" className="menu-item__link">Список</Link></div>
-                            <div className="menu__item"><Link to="/add" className="menu-item__link">Занять
+                            <div className="menu__item"><Link to="/" activeClassName='active' className="menu-item__link">Главная</Link></div>
+                            <div className="menu__item"><Link to="/list" activeClassName='active' className="menu-item__link">Список</Link></div>
+                            <div className="menu__item"><Link to="/add" activeClassName='active' className="menu-item__link">Занять
                                 аудиторию</Link>
                             </div>
-                            <div className="menu__item"><Link to="/room" className="menu-item__link">Добавить
+                            <div className="menu__item"><Link to="/room" activeClassName='active' className="menu-item__link">Добавить
                                 аудиторию</Link></div>
-                            <div className="menu__item"><Link to="/stats" className="menu-item__link">Статистика</Link>
+                            <div className="menu__item"><Link to="/stats" activeClassName='active' className="menu-item__link">Статистика</Link>
                             </div>
-                            <div className="menu__item"><Link to="/delete" className="menu-item__link">Удалить
+                            <div className="menu__item"><Link to="/delete" activeClassName='active' className="menu-item__link">Удалить
                                 аудиторию</Link></div>
                         </nav>
                     </header>
@@ -53,6 +53,7 @@ class App extends Component {
                     <p className="intro">
                        FreeRoom - приложение, показывающие свободные аудитории в главном корпусе университета
                         ИТМО. Добавьте аудиторию на карту и займите её!
+                        Для просмотра информации по аудитории нажмите на неё.
                     </p>
 
                     <div className="tip">
@@ -63,6 +64,7 @@ class App extends Component {
                             <li>ctrl+n - добавить аудиторию</li>
                             <li>ctrl+l - список аудиторий</li>
                         </ul>
+
                     </div>
                     </footer>
                 </div>

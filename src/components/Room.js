@@ -2,7 +2,9 @@
  * Created by s70c3 on 02.02.17.
  */
 import React, {Component} from 'react';
+import {browserHistory} from 'react-router';
 import '../styles/Room.css';
+import * as roomApi from '../api/roomAPI';
 
 class Room extends Component {
 
@@ -11,49 +13,13 @@ class Room extends Component {
         this.state = {clicked: 'none'}
     }
 
-    componentDidMount() {
-        this.mapState = "map-unselected"
+    onMapClick() {
+        roomApi.getRoom(this.props.room.number);
+        browserHistory.push(`/rooms/${this.props.room.number}`);
     };
 
-    onMapClick(area) {
-        this.setState(
-            function () {
-                if (this.state.clicked === area) {
-                    return {clicked: 'none'};
-                } else {
-                    return {clicked: area};
-                }
-            }
-        );
-    };
-
-    componentDidUpdate() {
-        this.emitEvent();
-    };
-
-    emitEvent() {
-        const clickedEvent = new CustomEvent(
-            'WorldMapClicked',
-            {detail: {clickedState: this.state.clicked}}
-        );
-        window.dispatchEvent(clickedEvent);
-    };
-
-    changeCss() {
-        const clicked = this.state.clicked;
-        let newMapState = {
-            na: "map-unselected"
-        };
-        if (clicked === 'none') {
-            //no need to make any areas selected, skip past 'else'
-        } else {
-            newMapState[clicked] = "map-selected";
-        }
-        this.mapState = newMapState;
-    };
 
     render() {
-        this.changeCss();
         return (    <g>
                         <rect className={this.props.room.state ? "notFreeRoom" : "freeRoom"}
                               x={this.props.room.coordinates.x*this.props.rectWidth}

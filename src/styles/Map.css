@@ -1,10 +1,9 @@
 .map {
-  height: auto;
   min-height: 240px;
   min-width: 300px;
   background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60'><rect x='0' y='0' width='60px' height='60px' fill='white' stroke='#f0f0f0' /></svg>") repeat;
   color: #f0f0f0;
-  flex-basis: 70%;
+  flex-basis: 75%;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;

@@ -16,7 +16,6 @@ class Delete extends Component {
         this.state = {
             number: '200',
         };
-
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -32,6 +31,7 @@ class Delete extends Component {
     render() {
         return (
             <div className="Add-container">
+                <h3>Удаление</h3>
                 <form className="room-form">
                     <label className="room-form_item"><p>Номер:</p>
                         <input
