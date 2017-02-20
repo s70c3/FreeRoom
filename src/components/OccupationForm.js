@@ -1,7 +1,7 @@
 /**
  * Created by s70c3 on 31.01.17.
  */
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import '../styles/Form.css';
 import {connect} from 'react-redux';
 import * as roomApi from '../api/roomAPI';
@@ -13,13 +13,12 @@ class OccupationForm extends Component {
         this.state = {
             number: '200',
 
-                date:'',
-                startHour: '7',
-                startMinute: '0',
-                endHour: '7',
-                endMinute: '0',
-                dayOfWeek: null
-
+            date: '',
+            startHour: '7',
+            startMinute: '0',
+            endHour: '7',
+            endMinute: '0',
+            dayOfWeek: 'понедельник'
 
 
         };
@@ -28,19 +27,18 @@ class OccupationForm extends Component {
         this.handleSelect = this.handleSelect.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleChange(event) {
 
-        this.setState({[event.target.name] : event.target.value});
+    handleChange(event) {
+        this.setState({[event.target.name]: event.target.value});
     }
 
     handleSelect(event) {
-
         let index = event.target.selectedIndex;
-        this.setState({[event.target.name] : event.target.options[index].value});
+        console.log( event.target.options[index].value);
+        this.setState({[event.target.name]: event.target.options[index].value});
     }
 
     handleSubmit(e) {
-        console.log(this);
         let occupation = {
             date: this.state.date,
             startHour: this.state.startHour,
@@ -53,6 +51,7 @@ class OccupationForm extends Component {
         roomApi.addOccupation(this.state.number, occupation);
         e.preventDefault();
     }
+
     render() {
         return (
             <div className="Add-container">
@@ -65,21 +64,20 @@ class OccupationForm extends Component {
                             onChange={this.handleChange}
                             autoFocus="true"
                         /></label>
-                    <label className="room-form_item">
-                        <p>Дата:</p>
-                        <input type="date" name="date" /></label>
-                    <p>или</p>
-                    <select name="dayOfWeek" onChange={this.handleSelect}>
-                    <option value="понедельник" default="true">понедельник</option>
-                    <option value="вторник">вторник</option>
-                    <option value="среда">среда</option>
-                    <option value="четверг" >четверг</option>
-                    <option value="пятница">пятница</option>
-                    <option value="суббота" >суббота</option>
-                    <option value="воскресенье">воскресенье</option>
-                </select>
+
+                    <label className="room-form_item"><p>День недели:</p>
+                        <select name="dayOfWeek" onChange={this.handleSelect}>
+                            <option value="понедельник" default="true">понедельник</option>
+                            <option value="вторник">вторник</option>
+                            <option value="среда">среда</option>
+                            <option value="четверг">четверг</option>
+                            <option value="пятница">пятница</option>
+                            <option value="суббота">суббота</option>
+                            <option value="воскресенье">воскресенье</option>
+                        </select>
+                    </label>
                     <label className="room-form_item"><p>Время начала:</p>
-                      <p>  <input
+                        <p><input
                             type="number"
                             placeholder="чч"
                             min={7}
@@ -87,19 +85,19 @@ class OccupationForm extends Component {
                             className="add__time"
                             name="startHour"
                             onChange={this.handleChange}
-                            />
-                        <input
-                            type="number"
-                            placeholder="мм"
-                            min={0}
-                            max={60}
-                            name="startMinute"
-                            className="add__time"
-                            onChange={this.handleChange}
-                        /></p>
+                        />
+                            <input
+                                type="number"
+                                placeholder="мм"
+                                min={0}
+                                max={60}
+                                name="startMinute"
+                                className="add__time"
+                                onChange={this.handleChange}
+                            /></p>
                     </label>
                     <label className="room-form_item"><p>Время окончания:</p>
-                      <p>  <input
+                        <p><input
                             type="number"
                             placeholder="чч"
                             min={7}
@@ -109,18 +107,18 @@ class OccupationForm extends Component {
 
                             onChange={this.handleChange}
                         />
-                        <input
-                            type="number"
-                            placeholder="мм"
-                            min={0}
-                            max={60}
-                            name="endMinute"
-                            className="add__time"
+                            <input
+                                type="number"
+                                placeholder="мм"
+                                min={0}
+                                max={60}
+                                name="endMinute"
+                                className="add__time"
 
-                            onChange={this.handleChange}
-                        /></p>
+                                onChange={this.handleChange}
+                            /></p>
                     </label>
-                    <input type="submit" value="Submit"  onClick={this.handleSubmit} />
+                    <input type="submit" value="Submit" onClick={this.handleSubmit}/>
                 </form>
             </div>
         );
@@ -129,7 +127,8 @@ class OccupationForm extends Component {
 
 const mapStateToProps = function (store) {
     return {
-        rooms: store.roomState.rooms
+        rooms: store.roomState.rooms,
+        dateTotal: store.roomState.dateTotal
     };
 };
 

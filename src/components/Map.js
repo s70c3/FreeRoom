@@ -41,7 +41,7 @@ class Map extends Component {
             this.props.rooms.forEach(room => {
                 room.occupation.forEach(occ => {
                         if (occ !== null) {
-                            if (weekDay === occ.dayOfWeek || date === occ.date) {
+                            if (weekDay === occ.dayOfWeek) {
                                 if (hour >= occ.startHour || (hour === occ.startHour && minute >= occ.startMinute)) {
                                     if (hour < occ.endHour || (hour === occ.endHour && minute <= occ.endMinute)) {
                                         room.state = true;

@@ -59,7 +59,7 @@ export function addOccupation(number,  occupation) {
         .then(response => {
             store.dispatch(addOccupationSuccess(response.data));
             window.alert("Аудитория занята. :)");
-            return response.date;
+            return response.data;
         })
         .catch(response => {
             window.alert("Не удалось занять аудиторию.\n"+response);

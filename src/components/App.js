@@ -41,10 +41,11 @@ class App extends Component {
                             </div>
                             <div className="menu__item"><Link to="/room" activeClassName='active' className="menu-item__link">Добавить
                                 аудиторию</Link></div>
-                            <div className="menu__item"><Link to="/stats" activeClassName='active' className="menu-item__link">Статистика</Link>
-                            </div>
                             <div className="menu__item"><Link to="/delete" activeClassName='active' className="menu-item__link">Удалить
                                 аудиторию</Link></div>
+                            <div className="menu__item"><Link to="/stats" activeClassName='active' className="menu-item__link">Статистика</Link>
+                            </div>
+
                         </nav>
                     </header>
                     {this.props.children}
