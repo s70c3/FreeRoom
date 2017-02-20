@@ -30,7 +30,9 @@ class Map extends Component {
     }
 
     render() {
+
         let date = this.props.dateTotal;
+        console.log(date);
         var hour, minute, weekDay;
 
         if (date !== undefined) {
@@ -46,6 +48,7 @@ class Map extends Component {
                                     if (hour < occ.endHour || (hour === occ.endHour && minute <= occ.endMinute)) {
                                         room.state = true;
                                     }
+                                    else { room.state = false; }
                                 }
                             }
                         }
