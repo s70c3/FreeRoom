@@ -1,8 +1,1 @@
-.freeRoomListItem {
-  color: green; }
-
-.notFreeRoomListItem {
-  color: red; }
-
-ul {
-  list-style: none; }
+.freeRoomListItem{color:green}.notFreeRoomListItem{color:red}ul{list-style:none}

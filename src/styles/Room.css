@@ -1,9 +1,1 @@
-.freeRoom {
-  fill: #cad473; }
-  .freeRoom + .roomText {
-    fill: #4a5a1c; }
-
-.notFreeRoom {
-  fill: #87232f; }
-  .notFreeRoom + .roomText {
-    fill: white; }
+.freeRoom{fill:#cad473}.freeRoom+.roomText{fill:#4a5a1c}.notFreeRoom{fill:#87232f}.notFreeRoom+.roomText{fill:#fff}
