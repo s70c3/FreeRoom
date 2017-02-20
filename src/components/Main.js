@@ -15,27 +15,15 @@ class Main extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
-    }
 
-    componentWillMount() {
         this.state = {
-            date: '',
-            hour: '',
-            minute: '',
+            hour: 7,
             weekDay: 'понедельник'
 
-        };
-
-        let date = new Date();
-        let dateTotal = {
-            date : date,
-            hour:  date.getHours(),
-            minute : date.getMinutes(),
-            weekDay : this.getDayName(date.getDay())
 
         };
-        roomApi.setDate(dateTotal);
     }
+
 
     handleChange(event) {
             this.setState({[event.target.name] : event.target.value});
@@ -55,14 +43,9 @@ class Main extends Component {
         roomApi.setDate(dateTotal);
     }
 
-    getDayName(number) {
-        let names = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота' ];
-        return names[number];
-    }
-
     render() {
 
-         let dateString = this.props.dateTotal.date+" "+ this.props.dateTotal.weekDay+ " "+ this.props.dateTotal.hour+ ":"+this.props.dateTotal.minute;
+         let dateString = this.props.dateTotal.weekDay+ " "+  (this.props.dateTotal.hour > 10 ? this.props.dateTotal.hour : "0"+this.props.dateTotal.hour )+":"+ (this.props.dateTotal.minute > 10 ? this.props.dateTotal.minute : "0"+this.props.dateTotal.minute );
         return (
             <div className="Add-container">
                 <p> Запрошенное время: {dateString}</p>
@@ -75,7 +58,7 @@ class Main extends Component {
                             >
                              <option value="понедельник"
                              default="true">понедельник</option>
-                                <option value={"вторник"}>вторник</option>
+                                <option value="вторник">вторник</option>
                                 <option value="среда">среда</option>
                                 <option value="четверг" >четверг</option>
                                 <option value="пятница">пятница</option>

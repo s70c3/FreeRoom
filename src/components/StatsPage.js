@@ -30,9 +30,7 @@ class StatsPage extends Component {
                 room.occupation.forEach(occ => {
                         if (occ !== null) {
                             if (weekDay === occ.dayOfWeek || date === occ.date) {
-                                console.log('week');
                                 if (hour >= occ.startHour || (hour === occ.startHour && minute >= occ.startMinute)) {
-                                    console.log('start');
                                     if (hour < occ.endHour || (hour === occ.endHour && minute <= occ.endMinute)) {
                                         occupied++;
                                         room.state = true;

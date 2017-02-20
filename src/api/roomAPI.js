@@ -75,7 +75,6 @@ export function deleteRoom(roomNumber) {
 }
 
 export function setDate(date) {
-    console.log('set',date);
    return store.dispatch(setDateSuccess(date));
 
 }

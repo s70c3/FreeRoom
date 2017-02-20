@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import '../styles/App.css';
+import * as roomApi from '../api/roomAPI';
 
 import {Link} from 'react-router'
 import {HotKeys} from 'react-hotkeys';
@@ -24,6 +25,30 @@ class App extends Component {
         'delete': (event) => browserHistory.push('/delete')
 
     };
+
+    getDayName(number) {
+        let names = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота' ];
+        return names[number];
+    }
+    componentWillMount() {
+        this.state = {
+            date: '',
+            hour: '',
+            minute: '',
+            weekDay: 'понедельник'
+
+        };
+
+        let date = new Date();
+        let dateTotal = {
+            date : date,
+            hour:  date.getHours(),
+            minute : date.getMinutes(),
+            weekDay : this.getDayName(date.getDay())
+
+        };
+        roomApi.setDate(dateTotal);
+    }
 
     render() {
 
